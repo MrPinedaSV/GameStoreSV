@@ -23,6 +23,11 @@ public class UsuarioController {
         return usuarioService.getUsuarioById(id).orElse(null);
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home"; // Va a buscar home.html en /templates
+    }
+
     @PostMapping
     public Usuario createUsuario(@RequestBody Usuario usuario) {
         return usuarioService.saveUsuario(usuario);

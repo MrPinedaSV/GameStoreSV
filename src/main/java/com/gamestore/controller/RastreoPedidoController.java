@@ -23,6 +23,12 @@ public class RastreoPedidoController {
         return rastreoPedidoService.getRastreoById(id).orElse(null);
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home"; // Va a buscar home.html en /templates
+    }
+
+
     @PostMapping
     public Rastreo_Pedidos create(@RequestBody Rastreo_Pedidos rastreo) {
         return rastreoPedidoService.saveRastreo(rastreo);

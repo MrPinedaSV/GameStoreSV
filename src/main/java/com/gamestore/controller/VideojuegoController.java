@@ -23,6 +23,11 @@ public class VideojuegoController {
         return videojuegoService.getVideojuegoById(id).orElse(null);
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home"; // Va a buscar home.html en /templates
+    }
+
     @PostMapping
     public VideoJuego create(@RequestBody VideoJuego videojuego) {
         return videojuegoService.saveVideojuego(videojuego);

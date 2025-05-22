@@ -13,6 +13,11 @@ public class CarritoItemController {
     @Autowired
     private CarritoItemService carritoItemService;
 
+    @GetMapping("/home")
+    public String home() {
+        return "home"; // Va a buscar home.html en /templates//sthephany
+    }
+
     @GetMapping
     public List<Carrito_Items> getAllItems() {
         return carritoItemService.getAllItems();

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Store SV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
+
+<!-- Navbar se inserta automáticamente -->
+<header class="flex items-center justify-between p-6 bg-[#171a21] shadow-xl">
+    <div class="flex items-center space-x-4">
+        <img src="img/logo.png" alt="Logo Game Store SV" class="h-12 w-12" />
+        <h1 class="text-3xl font-extrabold text-white tracking-wide">Game Store SV</h1>
+    </div>
+    <span class="text-sm text-indigo-300 italic">Tu mundo gamer en un solo lugar</span>
+</header>
+
+<main class="p-8">
+    <section class="text-center mb-10">
+        <h2 class="text-4xl font-extrabold text-indigo-400 mb-4">🔥 ¡Top videojuegos del momento!</h2>
+        <p class="text-lg text-gray-300">Ofertas exclusivas, lanzamientos recientes y aventuras épicas te esperan.</p>
+    </section>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="lista-juegos">
+        <!-- Tarjetas de juegos se insertan aquí -->
+    </div>
+</main>
+
+<footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">
+    &copy; 2025 Game Store SV. Todos los derechos reservados.
+</footer>
+
+<script src="js/util.js"></script>
+<script>
+    const juegosMock = [
+      {
+        nombre: "Elden Ring",
+        descripcion: "Explora las Tierras Intermedias en este épico RPG de mundo abierto.",
+        imagen: "https://image.api.playstation.com/vulcan/ap/rnd/202111/1619/dznCw5ILym0Vnsf8FRllOUCS.png",
+        precio: 59.99
+      },
+      {
+        nombre: "Hogwarts Legacy",
+        descripcion: "Vive tu aventura como un mago en el siglo XIX.",
+        imagen: "https://cdn1.epicgames.com/offer/043b6b4e275949548189cdb87d0ed58d/EGS_HogwartsLegacy_WarnerBrosGames_S1_2560x1440-59ef5433f16c02bb8979dd09b6e4aef1",
+        precio: 69.99
+      },
+      {
+        nombre: "Cyberpunk 2077: Phantom Liberty",
+        descripcion: "Regresa a Night City con nuevas misiones y mejoras gráficas.",
+        imagen: "https://cdn1.epicgames.com/offer/ba9608e85d784ff2beef29b759b62d0d/EGS_Cyberpunk2077PhantomLibertyExpansion_CDPROJEKTRED_DLC_S1_2560x1440-3eecad8990124dfcaa23b7b6c86f33f4",
+        precio: 34.99
+      },
+      {
+        nombre: "Star Wars Jedi: Survivor",
+        descripcion: "La historia de Cal Kestis continúa con nuevos poderes y enemigos.",
+        imagen: "https://cdn1.epicgames.com/offer/7a08de4fcb7e48c2bfaac39b76c38200/EGS_STARWARSJediSurvivor_RespawnEntertainment_S1_2560x1440-10e78cdd6b8ae97d51d066de5dbb71ef",
+        precio: 59.99
+      },
+      {
+  nombre: "The Last of Us",
+  descripcion: "Acompaña a Joel y Ellie en una emotiva y peligrosa travesía en un mundo postapocalíptico.",
+  imagen: "img/the_last_of_us.png",
+  precio: 49.99
+},
+{
+  nombre: "The Legend of Zelda: Breath of the Wild",
+  descripcion: "Descubre un vasto mundo abierto lleno de aventuras en Hyrule.",
+  imagen: "https://cdn1.epicgames.com/salesEvent/salesEvent/zelda_breath_of_the_wild_2560x1440-b43d8c276fc5d58efce8bb5b5ed16b87", // Puedes reemplazar esta URL si subes una imagen personalizada
+  precio: 59.99
+},
+{
+  nombre: "Silent Hill (Versión Japón)",
+  descripcion: "Sumérgete en el terror psicológico con esta clásica versión japonesa.",
+  imagen: "https://upload.wikimedia.org/wikipedia/en/9/90/Silent_Hill_video_game_cover.png", // Puedes reemplazar con imagen personalizada si la subes
+  precio: 39.99
+},
+{
+  nombre: "Mario Kart 8 Deluxe",
+  descripcion: "Compite con tus personajes favoritos en intensas carreras llenas de acción.",
+  imagen: "https://m.media-amazon.com/images/I/81V8KpS3F1L._AC_UF1000,1000_QL80_.jpg", // Puedes subir una imagen propia si lo prefieres
+  precio: 49.99
+}
+
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const contenedor = document.getElementById("lista-juegos");
+      juegosMock.forEach(juego => {
+        contenedor.innerHTML += renderizarJuego(juego);
+      });
+    });
+</script>
+</body>
+</html>

@@ -13,6 +13,11 @@ public class PedidoItemController {
     @Autowired
     private PedidoItemService pedidoItemService;
 
+    @GetMapping("/home")
+    public String home() {
+        return "home"; // Va a buscar home.html en /templates
+    }
+
     @GetMapping
     public List<Pedido_Items> getAll() {
         return pedidoItemService.getAllItems();

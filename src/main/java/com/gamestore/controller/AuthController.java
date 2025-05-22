@@ -30,6 +30,7 @@ public class AuthController {
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
         Authentication auth = authenticationManager.authenticate(
@@ -55,3 +56,4 @@ public class AuthController {
         return ResponseEntity.ok("Usuario registrado correctamente");
     }
 }
+

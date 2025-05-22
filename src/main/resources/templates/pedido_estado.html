@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estado del Pedido - Game Store SV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
+
+<!-- Navbar insertado automáticamente por util.js -->
+
+<header class="p-6 bg-[#171a21] shadow-xl flex flex-col items-center text-center space-y-2">
+    <h1 class="text-3xl font-extrabold text-white tracking-wide">📦 Seguimiento de Pedido</h1>
+    <p class="text-sm text-indigo-300 italic">Consulta el estado actual de tu compra en Game Store SV</p>
+</header>
+
+<main class="flex flex-col items-center justify-center px-4 py-10">
+    <div id="estado-pedido" class="bg-[#2f3342] rounded-2xl shadow-2xl p-8 max-w-md w-full text-center border border-indigo-500/30 backdrop-blur-md">
+        <!-- Estado del pedido se insertará aquí por pedidos.js -->
+    </div>
+</main>
+
+<footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">
+    &copy; 2025 Game Store SV. Todos los derechos reservados.
+</footer>
+
+<script src="js/pedidos.js"></script>
+<script src="js/util.js"></script>
+</body>
+</html>

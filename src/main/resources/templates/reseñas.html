@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas de Juegos - Game Store SV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="bg-[#1b1e24] text-gray-200 font-sans">
+
+<!-- Navbar insertado automáticamente por util.js -->
+
+<header class="p-6 bg-[#171a21] shadow-md">
+    <h1 class="text-3xl font-bold text-white">Reseñas de Juegos</h1>
+    <p class="text-sm text-gray-400">Lee lo que dicen otros jugadores y deja tu opinión</p>
+</header>
+
+<main class="p-6 max-w-4xl mx-auto">
+
+    <!-- Lista de reseñas -->
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-4">Opiniones de la comunidad</h2>
+        <div id="lista-reseñas" class="space-y-4">
+            <!-- Reseñas se insertarán aquí -->
+        </div>
+    </section>
+
+    <!-- Formulario para agregar reseña -->
+    <section class="bg-[#2a2d32] p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-bold mb-4">Escribe una reseña</h2>
+        <form id="form-reseña" class="space-y-4">
+            <input type="text" id="nombre" placeholder="Tu nombre" required class="w-full p-2 rounded bg-[#1b1e24] border border-gray-600 text-white">
+            <textarea id="comentario" placeholder="Escribe tu opinión..." required rows="4" class="w-full p-2 rounded bg-[#1b1e24] border border-gray-600 text-white"></textarea>
+            <button type="submit" class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded">Enviar reseña</button>
+        </form>
+    </section>
+
+</main>
+
+<footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">
+    &copy; 2025 Game Store SV. Opiniones de jugadores
+</footer>
+
+<script src="js/reseñas.js"></script>
+<script src="js/util.js"></script>
+</body>
+</html>

@@ -18,6 +18,10 @@ public class CarritoController {
         return carritoService.getAllCarritos();
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home"; // Va a buscar home.html en /templates
+    }
     @GetMapping("/{id}")
     public Carrito getCarritoById(@PathVariable Integer id) {
         return carritoService.getCarritoById(id).orElse(null);

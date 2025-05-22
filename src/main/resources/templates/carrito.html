@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Carrito de Compras - Game Store SV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
+
+<!-- Navbar insertado automáticamente por util.js -->
+
+<header class="p-6 bg-[#171a21] shadow-lg text-center">
+    <h1 class="text-3xl font-bold text-white">🛒 Tu Carrito</h1>
+    <p class="text-sm text-gray-400">Revisa y confirma tu compra</p>
+</header>
+
+<main class="p-6 max-w-5xl mx-auto">
+    <div id="carrito-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+        <!-- Juegos en el carrito -->
+    </div>
+
+    <div class="text-center mt-6">
+        <h2 class="text-xl font-semibold mb-2">Total: $<span id="total" class="text-lime-400">0.00</span></h2>
+        <button onclick="realizarCompra()" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-pink-500 hover:to-yellow-500 text-white font-bold py-2 px-6 rounded-full shadow-md transition">
+            Realizar Compra
+        </button>
+        <p id="mensaje" class="text-red-400 mt-4"></p>
+    </div>
+</main>
+
+<footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">
+    &copy; 2025 Game Store SV. Todos los derechos reservados.
+</footer>
+
+<script src="js/carrito.js"></script>
+<script src="js/util.js"></script>
+</body>
+</html>

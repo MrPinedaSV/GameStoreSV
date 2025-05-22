@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Panel de Administración - Game Store SV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
+</head>
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
+
+<!-- Navbar se inserta automáticamente -->
+<header class="p-6 bg-[#171a21] shadow-xl">
+    <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-white tracking-wide">Panel de Administración</h1>
+        <span class="text-sm text-indigo-300 italic">Gestión de productos</span>
+    </div>
+</header>
+
+<main class="p-8">
+    <section class="text-center mb-10">
+        <h2 class="text-4xl font-extrabold text-indigo-400 mb-2">🎮 Juegos en Catálogo</h2>
+        <p class="text-md text-gray-300">Agrega, edita o elimina videojuegos desde este panel.</p>
+    </section>
+
+    <div class="flex justify-end mb-6">
+        <button onclick="agregarJuego()" class="bg-gradient-to-r from-green-500 to-lime-500 hover:from-lime-400 hover:to-green-400 text-white font-semibold py-2 px-4 rounded-xl shadow-md transition">
+            + Agregar Juego
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="admin-juegos">
+        <!-- Juegos administrables se cargarán aquí -->
+    </div>
+</main>
+
+<footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">
+    &copy; 2025 Game Store SV. Panel de Administración
+</footer>
+
+<script src="js/admin.js"></script>
+<script src="js/util.js"></script>
+</body>
+</html>
