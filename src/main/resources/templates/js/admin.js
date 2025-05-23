@@ -1,3 +1,5 @@
+// admin.js
+
 function renderizarJuegoAdmin(juego) {
   return `
     <div class="bg-[#2f3342] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform hover:scale-[1.03] duration-300 flex flex-col">
@@ -19,6 +21,7 @@ function renderizarJuegoAdmin(juego) {
   `;
 }
 
+// Simula la carga de juegos (reemplaza con fetch() o API real si deseas)
 document.addEventListener("DOMContentLoaded", () => {
   const juegos = [
     {
@@ -41,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Función base para agregar juego
 function agregarJuego() {
-  alert("Funcionalidad de agregar juego aún no implementada.");
+  alert("🚧 La funcionalidad de agregar juego aún no está implementada.");
 }

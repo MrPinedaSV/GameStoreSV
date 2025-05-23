@@ -9,15 +9,6 @@
 </head>
 <body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
 
-<!-- Navbar se inserta automáticamente -->
-<header class="flex items-center justify-between p-6 bg-[#171a21] shadow-xl">
-    <div class="flex items-center space-x-4">
-        <img src="img/logo.png" alt="Logo Game Store SV" class="h-12 w-12" />
-        <h1 class="text-3xl font-extrabold text-white tracking-wide">Game Store SV</h1>
-    </div>
-    <span class="text-sm text-indigo-300 italic">Tu mundo gamer en un solo lugar</span>
-</header>
-
 <main class="p-8">
     <section class="text-center mb-10">
         <h2 class="text-4xl font-extrabold text-indigo-400 mb-4">🔥 ¡Top videojuegos del momento!</h2>
@@ -61,33 +52,33 @@
         precio: 59.99
       },
       {
-  nombre: "The Last of Us",
-  descripcion: "Acompaña a Joel y Ellie en una emotiva y peligrosa travesía en un mundo postapocalíptico.",
-  imagen: "img/the_last_of_us.png",
-  precio: 49.99
-},
-{
-  nombre: "The Legend of Zelda: Breath of the Wild",
-  descripcion: "Descubre un vasto mundo abierto lleno de aventuras en Hyrule.",
-  imagen: "https://cdn1.epicgames.com/salesEvent/salesEvent/zelda_breath_of_the_wild_2560x1440-b43d8c276fc5d58efce8bb5b5ed16b87", // Puedes reemplazar esta URL si subes una imagen personalizada
-  precio: 59.99
-},
-{
-  nombre: "Silent Hill (Versión Japón)",
-  descripcion: "Sumérgete en el terror psicológico con esta clásica versión japonesa.",
-  imagen: "https://upload.wikimedia.org/wikipedia/en/9/90/Silent_Hill_video_game_cover.png", // Puedes reemplazar con imagen personalizada si la subes
-  precio: 39.99
-},
-{
-  nombre: "Mario Kart 8 Deluxe",
-  descripcion: "Compite con tus personajes favoritos en intensas carreras llenas de acción.",
-  imagen: "https://m.media-amazon.com/images/I/81V8KpS3F1L._AC_UF1000,1000_QL80_.jpg", // Puedes subir una imagen propia si lo prefieres
-  precio: 49.99
-}
-
+        nombre: "The Last of Us",
+        descripcion: "Acompaña a Joel y Ellie en una emotiva y peligrosa travesía en un mundo postapocalíptico.",
+        imagen: "img/the_last_of_us.png",
+        precio: 49.99
+      },
+      {
+        nombre: "The Legend of Zelda: Breath of the Wild",
+        descripcion: "Descubre un vasto mundo abierto lleno de aventuras en Hyrule.",
+        imagen: "https://cdn1.epicgames.com/salesEvent/salesEvent/zelda_breath_of_the_wild_2560x1440-b43d8c276fc5d58efce8bb5b5ed16b87",
+        precio: 59.99
+      },
+      {
+        nombre: "Silent Hill (Versión Japón)",
+        descripcion: "Sumérgete en el terror psicológico con esta clásica versión japonesa.",
+        imagen: "https://upload.wikimedia.org/wikipedia/en/9/90/Silent_Hill_video_game_cover.png",
+        precio: 39.99
+      },
+      {
+        nombre: "Mario Kart 8 Deluxe",
+        descripcion: "Compite con tus personajes favoritos en intensas carreras llenas de acción.",
+        imagen: "https://m.media-amazon.com/images/I/81V8KpS3F1L._AC_UF1000,1000_QL80_.jpg",
+        precio: 49.99
+      }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
+      insertarNavbar(); // inserta la navbar antes de renderizar el contenido
       const contenedor = document.getElementById("lista-juegos");
       juegosMock.forEach(juego => {
         contenedor.innerHTML += renderizarJuego(juego);

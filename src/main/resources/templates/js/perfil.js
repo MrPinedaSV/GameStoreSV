@@ -1,13 +1,16 @@
+// perfil.js
+
 document.addEventListener("DOMContentLoaded", () => {
+  const contenedor = document.getElementById("datos-usuario");
   const usuario = localStorage.getItem("usuario");
 
   if (!usuario) {
-    document.getElementById("datos-usuario").textContent = "No has iniciado sesión.";
+    contenedor.innerHTML = `<p class="text-red-400 font-semibold">No has iniciado sesión.</p>`;
     return;
   }
 
-  document.getElementById("datos-usuario").innerHTML = `
-    <p>Correo: ${usuario}</p>
+  contenedor.innerHTML = `
+    <p><span class="font-semibold text-white">Correo:</span> ${usuario}</p>
   `;
 });
 

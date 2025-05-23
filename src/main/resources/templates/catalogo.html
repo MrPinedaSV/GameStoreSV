@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <title>Catálogo de Videojuegos - Game Store SV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/estilo.css" />
 </head>
-<body class="bg-[#1b1e24] text-gray-200 font-sans">
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
 
-<!-- Navbar insertado automáticamente por util.js -->
+<!-- Navbar insertado automáticamente -->
 
-<header class="p-6 bg-[#171a21] shadow-md text-center">
-    <h1 class="text-3xl font-bold text-white">🎮 Catálogo de Videojuegos</h1>
-    <p class="text-sm text-gray-400">Explora lo mejor del gaming, desde clásicos hasta estrenos</p>
+<header class="p-6 bg-[#171a21] shadow-xl text-center">
+    <h1 class="text-4xl font-extrabold text-indigo-400 mb-2">🎮 Catálogo de Videojuegos</h1>
+    <p class="text-sm text-gray-300">Explora lo mejor del gaming, desde clásicos hasta estrenos</p>
 </header>
 
-<main class="p-6 max-w-7xl mx-auto">
-    <div id="catalogo-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- Tarjetas de juegos -->
-    </div>
-    <p id="mensaje-error" class="text-red-400 mt-6 text-center"></p>
+<main class="p-8 max-w-7xl mx-auto">
+    <section id="catalogo-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Las tarjetas de juegos se insertan aquí -->
+    </section>
+
+    <p id="mensaje-error" class="text-red-400 mt-6 text-center text-sm"></p>
 </main>
 
 <footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">

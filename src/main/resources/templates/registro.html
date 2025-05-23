@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Registro</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Crear Cuenta - Game Store SV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/estilo.css" />
 </head>
-<body>
-<h1>Crear Cuenta</h1>
-<form id="form-registro">
-    <input type="text" id="nombre" placeholder="Nombre completo" required>
-    <input type="email" id="email" placeholder="Correo" required>
-    <input type="password" id="password" placeholder="Contraseña" required>
-    <button type="submit">Registrarse</button>
-</form>
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans">
 
-<script src="js/regitro.js"></script>
+<!-- Navbar se inserta automáticamente -->
 <script src="js/util.js"></script>
 
+<main class="flex items-center justify-center min-h-screen px-4">
+    <div class="bg-[#2a2d32] p-8 rounded-2xl shadow-xl w-full max-w-md border border-indigo-500/30">
+        <h1 class="text-3xl font-bold mb-6 text-center text-white">Crear Cuenta</h1>
+
+        <form id="form-registro" class="flex flex-col space-y-4">
+            <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Nombre completo"
+                    required
+                    class="p-3 rounded bg-[#1b1e24] border border-gray-600 focus:outline-none focus:border-indigo-500"
+            />
+            <input
+                    type="email"
+                    id="email"
+                    placeholder="Correo electrónico"
+                    required
+                    class="p-3 rounded bg-[#1b1e24] border border-gray-600 focus:outline-none focus:border-indigo-500"
+            />
+            <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required
+                    class="p-3 rounded bg-[#1b1e24] border border-gray-600 focus:outline-none focus:border-indigo-500"
+            />
+            <button
+                    type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded transition"
+            >
+                Registrarse
+            </button>
+        </form>
+    </div>
+</main>
+
+<footer class="bg-[#171a21] text-gray-400 text-center py-4 mt-10">
+    &copy; 2025 Game Store SV. Todos los derechos reservados.
+</footer>
+
+<script src="js/registro.js"></script>
 </body>
 </html>
-

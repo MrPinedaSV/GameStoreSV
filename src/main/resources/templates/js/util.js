@@ -22,6 +22,12 @@ function renderizarJuego(juego) {
 
 function agregarAlCarrito(juego) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  if (carrito.some(item => item.nombre === juego.nombre)) {
+    alert(`"${juego.nombre}" ya está en el carrito.`);
+    return;
+  }
+
   carrito.push(juego);
   localStorage.setItem("carrito", JSON.stringify(carrito));
   alert(`"${juego.nombre}" ha sido agregado al carrito 🎮`);
@@ -29,15 +35,22 @@ function agregarAlCarrito(juego) {
 
 function insertarNavbar() {
   const navbar = `
-    <nav class="bg-[#1b1e24] text-gray-300 shadow-md p-4 flex justify-center space-x-8 text-sm font-medium mb-6 sticky top-0 z-50 backdrop-blur-sm">
-      <a href="index.html" class="hover:text-white">Inicio</a>
-      <a href="admin_panel.html" class="hover:text-white">Admin</a>
-      <a href="pedido_estado.html" class="hover:text-white">Pedidos</a>
-      <a href="reseñas.html" class="hover:text-white">Reseñas</a>
-      <a href="login.html" class="hover:text-white">Login</a>
-    </nav>
+    <header class="bg-[#1b1e24] text-gray-300 shadow-md p-4 mb-6 sticky top-0 z-50 backdrop-blur-sm">
+      <div class="flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4">
+          <img src="img/logo.png" alt="Logo Game Store SV" class="h-10 w-10" />
+          <h1 class="text-2xl font-extrabold text-white tracking-wide">Game Store SV</h1>
+        </div>
+        <span class="text-sm text-indigo-300 italic hidden sm:block">Tu mundo gamer en un solo lugar</span>
+      </div>
+      <nav class="mt-4 flex justify-center space-x-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-white">Inicio</a>
+        <a href="admin_panel.html" class="hover:text-white">Admin</a>
+        <a href="pedido_estado.html" class="hover:text-white">Pedidos</a>
+        <a href="reseñas.html" class="hover:text-white">Reseñas</a>
+        <a href="login.html" class="hover:text-white">Login</a>
+      </nav>
+    </header>
   `;
   document.body.insertAdjacentHTML("afterbegin", navbar);
 }
-
-document.addEventListener("DOMContentLoaded", insertarNavbar);

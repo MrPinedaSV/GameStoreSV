@@ -7,33 +7,38 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/estilo.css" />
 </head>
-<body class="bg-[#1b1e24] flex items-center justify-center min-h-screen text-gray-200 font-sans">
+<body class="bg-gradient-to-br from-[#1b1e24] via-[#232946] to-[#0f172a] text-gray-200 font-sans min-h-screen">
 
-<main class="bg-[#2a2d32] p-8 rounded-lg shadow-lg w-full max-w-md">
-    <h1 class="text-3xl font-bold mb-6 text-center">Iniciar Sesión</h1>
+<!-- Navbar insertada dinámicamente -->
+<script src="js/util.js"></script>
 
-    <form id="form-login" class="flex flex-col space-y-4">
-        <input
-                type="email"
-                id="email"
-                placeholder="Correo electrónico"
-                required
-                class="p-3 rounded bg-[#1b1e24] border border-gray-600 focus:outline-none focus:border-green-500"
-        />
-        <input
-                type="password"
-                id="password"
-                placeholder="Contraseña"
-                required
-                class="p-3 rounded bg-[#1b1e24] border border-gray-600 focus:outline-none focus:border-green-500"
-        />
-        <button
-                type="submit"
-                class="bg-green-600 hover:bg-green-500 text-white font-semibold py-3 rounded transition"
-        >
-            Entrar
-        </button>
-    </form>
+<main class="flex items-center justify-center py-20 px-4">
+    <div class="bg-[#2a2d32] p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <h1 class="text-3xl font-extrabold text-center text-indigo-400 mb-6">Iniciar Sesión</h1>
+
+        <form id="form-login" class="flex flex-col space-y-5">
+            <input
+                    type="email"
+                    id="email"
+                    placeholder="Correo electrónico"
+                    required
+                    class="p-3 rounded-lg bg-[#1b1e24] border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            />
+            <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required
+                    class="p-3 rounded-lg bg-[#1b1e24] border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            />
+            <button
+                    type="submit"
+                    class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-lg transition duration-300 shadow-md"
+            >
+                Entrar
+            </button>
+        </form>
+    </div>
 </main>
 
 <script src="js/login.js"></script>
