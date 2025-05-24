@@ -7,7 +7,7 @@ document.getElementById("form-login").addEventListener("submit", e => {
 
   if (email && password) {
     localStorage.setItem("usuario", email);
-    alert("✅ Login exitoso. ¡Bienvenido!");
+    alert("Login exitoso. ¡Bienvenido!");
     window.location.href = "index.html";
   } else {
     alert("⚠️ Por favor, completa ambos campos.");
