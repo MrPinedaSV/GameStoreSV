@@ -41,7 +41,7 @@ public class AuthController {
     }
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegistroUsuarioDTO request) {
-        if (UsuarioRepository.findByEmail(request.getEmail()).isPresent()) {
+        if (usuarioRepository.findByEmail(request.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("El correo ya está en uso");
         }
 
@@ -51,7 +51,7 @@ public class AuthController {
         usuario.setPassword(passwordEncoder.encode(request.getPassword()));
         usuario.setRol("CLIENTE"); // o "ADMIN" si decides registrar administradores
 
-        UsuarioRepository.save(usuario);
+        usuarioRepository.save(usuario);
         return ResponseEntity.ok("Usuario registrado correctamente");
     }
 }

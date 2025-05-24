@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RestreoPedidoRepository extends JpaRepository<Rastreo_Pedidos, Integer> {
-    List<Rastreo_Pedidos> findByPedidoId(Integer idPedido);
+    List<Rastreo_Pedidos> findByPedidoIdPedido(Integer idPedido);
 }
