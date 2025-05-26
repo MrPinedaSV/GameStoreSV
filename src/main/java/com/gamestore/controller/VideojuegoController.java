@@ -43,4 +43,5 @@ public class VideojuegoController {
     public void delete(@PathVariable Integer id) {
         videojuegoService.deleteVideojuego(id);
     }
+
 }

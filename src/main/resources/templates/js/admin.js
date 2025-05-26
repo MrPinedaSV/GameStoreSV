@@ -47,4 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función base para agregar juego
 function agregarJuego() {
   alert("🚧 La funcionalidad de agregar juego aún no está implementada.");
+
 }
+
+
