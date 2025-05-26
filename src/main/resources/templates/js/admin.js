@@ -28,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
       nombre: "The Witcher 3",
       descripcion: "Una épica aventura en un mundo abierto.",
       precio: 29.99,
-      imagen: "img/witcher3.jpg"
+      imagen: "img/the witcher 3.png"
     },
     {
       nombre: "Cyberpunk 2077",
       descripcion: "Explora Night City con estilo futurista.",
       precio: 39.99,
-      imagen: "img/cyberpunk2077.jpg"
+      imagen: "img/Cyberpunk 2077 Phantom Liberty.png"
     }
   ];
 
