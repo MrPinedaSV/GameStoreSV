@@ -1,14 +1,11 @@
 package com.gamestore.entity;
 
 import jakarta.persistence.*;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
 import java.util.List;
 import lombok.*;
-
 
 @Entity
 @Table(name = "usuarios")

@@ -1,21 +1,29 @@
 package com.gamestore.controller;
 
+import com.gamestore.dto.UsuarioDTO;
 import com.gamestore.entity.Usuario;
 import com.gamestore.service.UsuarioService;
+import com.gamestore.mapper.UsuarioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
+
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@PreAuthorize("hasRole('ADMIN')")
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping
-    public List<Usuario> getAllUsuarios() {
-        return usuarioService.getAllUsuarios();
+    public List<UsuarioDTO> getAllUsuarios() {
+        return usuarioService.getAllUsuarios()
+         .stream()
+                .map(UsuarioMapper::toDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")
