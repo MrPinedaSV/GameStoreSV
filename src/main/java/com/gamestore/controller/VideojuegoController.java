@@ -1,6 +1,8 @@
 package com.gamestore.controller;
 
+import com.gamestore.dto.VideoJuegoDTO;
 import com.gamestore.entity.VideoJuego;
+import com.gamestore.mapper.VideoJuegoMapper;
 import com.gamestore.service.VideoJuegoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +16,11 @@ public class VideojuegoController {
     private VideoJuegoService videojuegoService;
 
     @GetMapping
-    public List<VideoJuego> getAll() {
-        return videojuegoService.getAllVideojuegos();
+    public List<VideoJuegoDTO> getAll() {
+        return videojuegoService.getAllVideojuegos()
+                .stream()
+                .map(VideoJuegoMapper::toDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")

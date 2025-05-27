@@ -1,6 +1,8 @@
 package com.gamestore.controller;
 
+import com.gamestore.dto.CarritoDTO;
 import com.gamestore.entity.Carrito;
+import com.gamestore.mapper.CarritoMapper;
 import com.gamestore.service.CarritoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +16,10 @@ public class CarritoController {
     private CarritoService carritoService;
 
     @GetMapping
-    public List<Carrito> getAllCarritos() {
-        return carritoService.getAllCarritos();
+    public List<CarritoDTO> getAllCarritos() {
+        return carritoService.getAllCarritos().stream()
+                .map(CarritoMapper::toDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")
@@ -24,8 +28,9 @@ public class CarritoController {
     }
 
     @PostMapping
-    public Carrito createCarrito(@RequestBody Carrito carrito) {
-        return carritoService.saveCarrito(carrito);
+    public CarritoDTO createCarrito(@RequestBody Carrito carrito) {
+        Carrito creado = carritoService.saveCarrito(carrito);
+        return CarritoMapper.toDTO(creado);
     }
 
     @PutMapping("/{id}")

@@ -1,6 +1,8 @@
 package com.gamestore.controller;
 
+import com.gamestore.dto.PedidoItemDTO;
 import com.gamestore.entity.Pedido_Items;
+import com.gamestore.mapper.PedidoItemMapper;
 import com.gamestore.service.PedidoItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +12,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/pedido-items")
 public class PedidoItemController {
+
     @Autowired
     private PedidoItemService pedidoItemService;
 
     @GetMapping
-    public List<Pedido_Items> getAll() {
-        return pedidoItemService.getAllItems();
+    public List<PedidoItemDTO> getAllItems() {
+        return pedidoItemService.getAllItems().stream()
+                .map(PedidoItemMapper::toDTO)
+                .toList();
     }
 
     @GetMapping("/{id}")
@@ -24,8 +29,9 @@ public class PedidoItemController {
     }
 
     @PostMapping
-    public Pedido_Items create(@RequestBody Pedido_Items item) {
-        return pedidoItemService.saveItem(item);
+    public PedidoItemDTO create(@RequestBody Pedido_Items item) {
+        Pedido_Items creado = pedidoItemService.saveItem(item);
+        return PedidoItemMapper.toDTO(creado);
     }
 
     @PutMapping("/{id}")

@@ -28,7 +28,7 @@ $(document).ready(function () {
         if (data.rol === 'ADMIN') {
           window.location.href = 'admin.html';
         } else if (data.rol === 'CLIENTE') {
-          window.location.href = 'catalogo.html';
+          window.location.href = 'index.html';
         } else {
           $('#message').html(
             `<div class="alert alert-warning">Rol no reconocido</div>`
@@ -45,5 +45,7 @@ $(document).ready(function () {
     });
   });
 });
+
+
 
 

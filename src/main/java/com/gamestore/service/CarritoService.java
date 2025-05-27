@@ -1,17 +1,21 @@
 package com.gamestore.service;
 
 import com.gamestore.entity.Carrito;
+import com.gamestore.entity.Usuario;
 import com.gamestore.repository.CarritoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gamestore.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class CarritoService {
-    @Autowired
-    private CarritoRepository carritoRepository;
+
+    private final CarritoRepository carritoRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public List<Carrito> getAllCarritos() {
         return carritoRepository.findAll();
@@ -22,6 +26,9 @@ public class CarritoService {
     }
 
     public Carrito saveCarrito(Carrito carrito) {
+        Integer idUsuario = carrito.getUsuario().getIdUsuario();
+        Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow();
+        carrito.setUsuario(usuario);
         return carritoRepository.save(carrito);
     }
 

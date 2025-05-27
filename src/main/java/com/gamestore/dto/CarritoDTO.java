@@ -7,7 +7,7 @@ import java.util.List;
 @Data
 public class CarritoDTO {
     private Integer idCarrito;
+    private  Integer IdUsuario;
     private LocalDateTime fechaCreacion;
     private List<CarritoItemDTO> items;
-    private  Integer IdUsuario;
 }

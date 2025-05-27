@@ -49,3 +49,8 @@ $(document).ready(function() {
     // Aquí iría lógica para llamar a tu API y agregar al carrito real
   });
 });
+function logout() {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("rol");
+    window.location.href = "login.html";
+}

@@ -22,6 +22,9 @@ public class Carrito {
     @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion = LocalDateTime.now();
 
+    @Column(nullable = false)
+    private Boolean activo = true;
+
     @OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL)
     private List<Carrito_Items> items;
 }

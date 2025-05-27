@@ -26,7 +26,7 @@ $(document).ready(function () {
                         <div class="col">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <h5 class="card-title">${juego.nombre}</h5>
+                                    <h5 class="card-title">${juego.titulo}</h5>
                                     <p class="card-text">${juego.descripcion || "Sin descripción."}</p>
                                     <p class="card-text fw-bold">Precio: $${juego.precio.toFixed(2)}</p>
                                     <button class="btn btn-primary agregar-carrito" data-id="${juego.idVideojuego}">Agregar al carrito</button>
@@ -70,4 +70,9 @@ $(document).ready(function () {
         });
     });
 });
+function logout() {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("rol");
+    window.location.href = "login.html";
+}
 

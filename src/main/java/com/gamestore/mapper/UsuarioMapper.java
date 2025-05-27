@@ -19,6 +19,7 @@ public class UsuarioMapper {
         usuario.setNombre(dto.getNombre());
         usuario.setEmail(dto.getEmail());
         usuario.setRol(dto.getRol());
+        usuario.setPassword(dto.getPassword());
         return usuario;
     }
 }

@@ -32,14 +32,14 @@ $(document).ready(function () {
                         <div class="card mb-3 shadow-sm">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h5>${item.videojuego.nombre}</h5>
+                                    <h5>${item.videojuego.titulo}</h5>
                                     <p class="mb-1">Precio: $${item.videojuego.precio.toFixed(2)}</p>
                                     <p class="mb-1">Cantidad:
-                                        <input type="number" class="form-control d-inline w-auto cantidad-input" data-id="${item.id}" value="${item.cantidad}" min="1" style="width: 70px;" />
+                                        <input type="number" class="form-control d-inline w-auto cantidad-input" data-id="${item.idItem}" value="${item.cantidad}" min="1" style="width: 70px;" />
                                     </p>
                                     <p class="mb-0 fw-bold">Subtotal: $${subtotal.toFixed(2)}</p>
                                 </div>
-                                <button class="btn btn-danger eliminar-item" data-id="${item.id}">Eliminar</button>
+                                <button class="btn btn-danger eliminar-item" data-id="${item.idItem}">Eliminar</button>
                             </div>
                         </div>
                     `);
@@ -56,6 +56,11 @@ $(document).ready(function () {
     // Eliminar item del carrito
     $(document).on("click", ".eliminar-item", function () {
         const id = $(this).data("id");
+
+        const confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto del carrito?");
+            if (!confirmacion) {
+                return; // Cancelado por el usuario
+            }
 
         $.ajax({
             url: `/api/carrito-items/${id}`,
@@ -102,7 +107,7 @@ $(document).ready(function () {
     // Finalizar pedido
     $("#finalizarPedido").click(function () {
         $.ajax({
-            url: "/api/pedidos",
+            url: "/api/pedidos/finalizar",
             method: "POST",
             headers: {
                 Authorization: "Bearer " + token
@@ -111,9 +116,15 @@ $(document).ready(function () {
                 alert("¡Pedido realizado con éxito!");
                 cargarCarrito(); // Para refrescar el carrito vacío
             },
-            error: function () {
-                alert("No se pudo finalizar el pedido.");
+            error: function (xhr) {
+                console.error(xhr.responseText); // 👈 muestra el error del backend
+                alert("No se pudo finalizar el pedido: " + xhr.responseText);
             }
         });
     });
 });
+function logout() {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("rol");
+    window.location.href = "login.html";
+}

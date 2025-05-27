@@ -21,13 +21,13 @@ $(document).ready(function () {
                 usuarios.forEach(u => {
                     tbody.append(`
                         <tr>
-                            <td>${u.idUsuario}</td>
+                            <td>${u.id}</td>
                             <td>${u.nombre}</td>
                             <td>${u.email}</td>
                             <td>${u.rol}</td>
                             <td>
-                                <button class="btn btn-sm btn-primary btnEditarUsuario" data-id="${u.idUsuario}">Editar</button>
-                                <button class="btn btn-sm btn-danger btnEliminarUsuario" data-id="${u.idUsuario}">Eliminar</button>
+                                <button class="btn btn-sm btn-primary btnEditarUsuario" data-id="${u.id}">Editar</button>
+                                <button class="btn btn-sm btn-danger btnEliminarUsuario" data-id="${u.id}">Eliminar</button>
                             </td>
                         </tr>
                     `);
@@ -52,7 +52,7 @@ $(document).ready(function () {
             method: "GET",
             headers: { Authorization: "Bearer " + token },
             success: function (usuario) {
-                $("#usuarioId").val(usuario.idUsuario);
+                $("#usuarioId").val(usuario.id);
                 $("#usuarioNombre").val(usuario.nombre);
                 $("#usuarioEmail").val(usuario.email);
                 $("#usuarioRol").val(usuario.rol);
@@ -130,7 +130,7 @@ $(document).ready(function () {
                     tbody.append(`
                         <tr>
                             <td>${v.idVideojuego}</td>
-                            <td>${v.nombre}</td>
+                            <td>${v.titulo}</td>
                             <td>$${v.precio.toFixed(2)}</td>
                             <td>${v.stock}</td>
                             <td>
@@ -160,12 +160,15 @@ $(document).ready(function () {
             method: "GET",
             headers: { Authorization: "Bearer " + token },
             success: function (videojuego) {
-                $("#videojuegoId").val(videojuego.idVideojuego);
-                $("#videojuegoNombre").val(videojuego.nombre);
-                $("#videojuegoPrecio").val(videojuego.precio);
-                $("#videojuegoStock").val(videojuego.stock);
-                $("#modalVideojuegoLabel").text("Editar Videojuego");
-                $("#modalVideojuego").modal("show");
+                 $("#videojuegoId").val(videojuego.idVideojuego);
+                    $("#videojuegoNombre").val(videojuego.titulo);
+                    $("#videojuegoDescripcion").val(videojuego.descripcion);
+                    $("#videojuegoPlataforma").val(videojuego.plataforma);
+                    $("#videojuegoPrecio").val(videojuego.precio);
+                    $("#videojuegoStock").val(videojuego.stock);
+                    $("#videojuegoImagen").val(videojuego.imagenUrl);
+                    $("#modalVideojuegoLabel").text("Editar Videojuego");
+                    $("#modalVideojuego").modal("show");
             },
             error: function () {
                 alert("Error al cargar videojuego");
@@ -177,13 +180,25 @@ $(document).ready(function () {
         e.preventDefault();
         const id = $("#videojuegoId").val();
         const videojuego = {
-            nombre: $("#videojuegoNombre").val(),
-            precio: parseFloat($("#videojuegoPrecio").val()),
-            stock: parseInt($("#videojuegoStock").val())
+           titulo: $("#videojuegoNombre").val(),
+               descripcion: $("#videojuegoDescripcion").val(),
+               plataforma: $("#videojuegoPlataforma").val(),
+               precio: parseFloat($("#videojuegoPrecio").val()),
+               stock: parseInt($("#videojuegoStock").val()),
+               imagenUrl: $("#videojuegoImagen").val()
         };
 
+        // Validación básica antes de enviar
+            if (
+                !videojuego.titulo || !videojuego.descripcion || !videojuego.plataforma ||
+                isNaN(videojuego.precio) || isNaN(videojuego.stock) || !videojuego.imagenUrl
+            ) {
+                alert("Por favor, completa todos los campos correctamente.");
+                return;
+            }
+
         const method = id ? "PUT" : "POST";
-        const url    = id ? `/api/videojuegos/${id}` : "/api/videojuegos";
+        const url = id ? `/api/videojuegos/${id}` : "/api/videojuegos";
 
         $.ajax({
             url,
@@ -218,7 +233,12 @@ $(document).ready(function () {
     });
 
     function limpiarModalVideojuego() {
-        $("#videojuegoId, #videojuegoNombre, #videojuegoPrecio, #videojuegoStock").val("");
+        $("#videojuegoId, #videojuegoNombre, #videojuegoDescripcion, #videojuegoPlataforma, #videojuegoPrecio, #videojuegoStock, #videojuegoImagen").val("");
     }
 });
+function logout() {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("rol");
+    window.location.href = "login.html";
+}
 

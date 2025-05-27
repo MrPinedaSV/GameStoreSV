@@ -39,7 +39,10 @@ public class SecurityConfig {
                                 "/login.html",
                                 "/catalogo.html",  // <— agregar
                                 "/carrito.html",    // <— agregar
-                                "/admin.html"
+                                "/admin.html",
+                                "/favicon.ico",
+                                "/rastreo.html",
+                                "/pedidos.html"
                         ).permitAll()
                         .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**").permitAll()
                         .requestMatchers("/error").permitAll()
@@ -47,9 +50,9 @@ public class SecurityConfig {
                         .requestMatchers("/api/usuarios/**").hasRole("ADMIN")
                         .requestMatchers("/api/videojuegos/**").hasAnyRole("ADMIN", "CLIENTE")
                         .requestMatchers("/api/pedidos/**").hasAnyRole("ADMIN", "CLIENTE")
-                        .requestMatchers("/api/carritos/**").hasRole("CLIENTE")
-                        .requestMatchers("/api/carrito-items/**").hasRole("CLIENTE")
-                        .requestMatchers("/api/pedido-items/**").hasRole("CLIENTE")
+                        .requestMatchers("/api/carritos/**").hasAnyRole("ADMIN", "CLIENTE")
+                        .requestMatchers("/api/carrito-items/**").hasAnyRole("ADMIN", "CLIENTE")
+                        .requestMatchers("/api/pedido-items/**").hasAnyRole("ADMIN", "CLIENTE")
                         .requestMatchers("/api/rastreo/**").hasAnyRole("ADMIN", "CLIENTE")
                         .anyRequest().authenticated()
                 )

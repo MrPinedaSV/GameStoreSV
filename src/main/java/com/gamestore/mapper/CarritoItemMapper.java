@@ -10,6 +10,17 @@ public class CarritoItemMapper {
         dto.setIdCarrito(item.getCarrito().getIdCarrito());
         dto.setIdVideojuego(item.getVideojuego().getIdVideojuego());
         dto.setCantidad(item.getCantidad());
+        dto.setVideojuego(VideoJuegoMapper.toDTO(item.getVideojuego()));
         return dto;
+    }
+
+    public static Carrito_Items toEntity(CarritoItemDTO dto) {
+        Carrito_Items item = new Carrito_Items();
+
+        // Solo se asignan IDs, las entidades completas deben cargarse en el servicio
+        item.setIdItem(dto.getIdItem());
+        item.setCantidad(dto.getCantidad());
+
+        return item;
     }
 }

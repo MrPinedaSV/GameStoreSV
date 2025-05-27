@@ -17,7 +17,7 @@ public class Pedido_Items {
     @JoinColumn(name = "id_pedido", nullable = false)
     private Pedido pedido;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_videojuego", nullable = false)
     private VideoJuego videojuego;
 

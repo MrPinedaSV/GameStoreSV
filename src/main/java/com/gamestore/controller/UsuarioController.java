@@ -5,8 +5,12 @@ import com.gamestore.entity.Usuario;
 import com.gamestore.service.UsuarioService;
 import com.gamestore.mapper.UsuarioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 
 
 import java.util.List;
@@ -15,8 +19,13 @@ import java.util.List;
 @RequestMapping("/api/usuarios")
 @PreAuthorize("hasRole('ADMIN')")
 public class UsuarioController {
+
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @GetMapping
     public List<UsuarioDTO> getAllUsuarios() {
@@ -27,19 +36,42 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public Usuario getUsuarioById(@PathVariable Integer id) {
-        return usuarioService.getUsuarioById(id).orElse(null);
+    public UsuarioDTO getUsuarioById(@PathVariable Integer id) {
+        Usuario usuario = usuarioService.getUsuarioById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+        return UsuarioMapper.toDTO(usuario); // Devuelve DTO limpio sin ciclos
     }
 
+
     @PostMapping
-    public Usuario createUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.saveUsuario(usuario);
+    public UsuarioDTO createUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        Usuario usuario = UsuarioMapper.toEntity(usuarioDTO);
+
+        if (usuarioDTO.getPassword() != null && !usuarioDTO.getPassword().isEmpty()) {
+            usuario.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
+        }
+
+        Usuario creado = usuarioService.saveUsuario(usuario);
+        return UsuarioMapper.toDTO(creado);
     }
 
     @PutMapping("/{id}")
-    public Usuario updateUsuario(@PathVariable Integer id, @RequestBody Usuario usuario) {
-        usuario.setIdUsuario(id);
-        return usuarioService.saveUsuario(usuario);
+    public UsuarioDTO updateUsuario(@PathVariable Integer id, @RequestBody UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioService.getUsuarioById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+
+        // Actualizamos solo los campos necesarios
+        usuario.setNombre(usuarioDTO.getNombre());
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setRol(usuarioDTO.getRol());
+
+        // Solo actualizamos la contraseña si se envió una nueva
+        if (usuarioDTO.getPassword() != null && !usuarioDTO.getPassword().isEmpty()) {
+            usuario.setPassword(passwordEncoder.encode(usuarioDTO.getPassword()));
+        }
+
+        Usuario actualizado = usuarioService.saveUsuario(usuario);
+        return UsuarioMapper.toDTO(actualizado);
     }
 
     @DeleteMapping("/{id}")

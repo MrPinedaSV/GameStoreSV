@@ -35,7 +35,9 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Admin</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" onclick="logout()">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="pedidos.html">Pedidos</a></li>
+                <li class="nav-item"><a class="nav-link" href="rastreo.html">Rastreo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="logout()">Salir</a></li>
             </ul>
         </div>
     </div>
@@ -133,8 +135,21 @@
             <div class="modal-body">
                 <input type="hidden" id="videojuegoId" />
                 <div class="mb-3">
-                    <label for="videojuegoNombre" class="form-label">Nombre</label>
+                    <label for="videojuegoNombre" class="form-label">Título</label>
                     <input type="text" class="form-control" id="videojuegoNombre" required />
+                </div>
+                <div class="mb-3">
+                    <label for="videojuegoDescripcion" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="videojuegoDescripcion" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="videojuegoPlataforma" class="form-label">Plataforma</label>
+                    <select class="form-select" id="videojuegoPlataforma" required>
+                        <option value="PC">PC</option>
+                        <option value="PlayStation">PlayStation</option>
+                        <option value="Xbox">Xbox</option>
+                        <option value="Nintendo Switch">Nintendo Switch</option>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="videojuegoPrecio" class="form-label">Precio</label>
@@ -143,6 +158,10 @@
                 <div class="mb-3">
                     <label for="videojuegoStock" class="form-label">Stock</label>
                     <input type="number" min="0" class="form-control" id="videojuegoStock" required />
+                </div>
+                <div class="mb-3">
+                    <label for="videojuegoImagen" class="form-label">URL de Imagen</label>
+                    <input type="url" class="form-control" id="videojuegoImagen" required />
                 </div>
             </div>
             <div class="modal-footer">
