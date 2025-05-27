@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,12 +34,19 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
         System.out.println("Login attempt: " + request.getEmail());
+        // Autenticación del usuario
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
+        // Cargar detalles del usuario (necesario para el token)
         UserDetails userDetails = usuarioDetailsService.loadUserByUsername(request.getEmail());
+        // Generar token JWT
         String token = jwtUtils.generateToken(userDetails);
-        return ResponseEntity.ok(new JwtResponse(token));
+        // Obtener el objeto Usuario (para extraer el rol)
+        Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+        // Devolver token y rol
+        return ResponseEntity.ok(new JwtResponse(token,usuario.getRol()));
     }
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegistroUsuarioDTO request) {
